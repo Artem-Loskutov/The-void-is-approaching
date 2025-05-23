@@ -1,0 +1,47 @@
+{
+  "interactions": [
+    {
+      "interaction_id": 0,
+      "text": "you changed location",
+      "actions_id": [ 2 ]
+    },
+    {
+      "interaction_id": 1,
+      "text": "monsters attck you",
+      "actions_id": [ 4 ]
+    },
+    {
+      "interaction_id": 2,
+      "text": "mining some ore",
+      "actions_id": [ 0 ]
+    }
+  ],
+
+  "actions": [
+    {
+      "action_id": 0,
+      "action": "add ore",
+      "item_id": 0
+    },
+    {
+      "action_id": 1,
+      "action": "delete ore",
+      "item_id": 0
+    },
+    {
+      "action_id": 2,
+      "action": "change location",
+      "item_id": -1
+    },
+    {
+      "action_id": 3,
+      "action": "change room",
+      "item_id": -1
+    },
+    {
+      "action_id": 4,
+      "action": "fight",
+      "item_id": -1
+    }
+  ]
+}

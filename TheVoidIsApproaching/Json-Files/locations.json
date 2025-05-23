@@ -1,0 +1,19 @@
+{
+  "locations": [
+    {
+      "location_id": 0,
+      "location_name": "base",
+      "interactions_id": [ 0, 1 ]
+    },
+    {
+      "location_id": 1,
+      "location_name": "mine",
+      "interactions_id": [ 1, 2 ]
+    },
+    {
+      "location_id": 2,
+      "location_name": "storage",
+      "interactions_id": [ 1, 3 ]
+    }
+  ]
+}
