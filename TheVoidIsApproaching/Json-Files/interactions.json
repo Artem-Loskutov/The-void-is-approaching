@@ -2,45 +2,55 @@
   "interactions": [
     {
       "interaction_id": 0,
-      "text": "you changed location",
-      "actions_id": [ 2 ]
+      "text": "you analized location",
+      "actions_id": [ 0 ]
     },
     {
       "interaction_id": 1,
+      "text": "you dicede to change location",
+      "actions_id": [ 1 ]
+    },
+    {
+      "interaction_id": 2,
       "text": "monsters attck you",
       "actions_id": [ 4 ]
     },
     {
-      "interaction_id": 2,
+      "interaction_id": 3,
       "text": "mining some ore",
-      "actions_id": [ 0 ]
+      "actions_id": [ 5 ]
     }
   ],
 
   "actions": [
     {
       "action_id": 0,
-      "action": "add ore",
-      "item_id": 0
+      "type": "get_location_info",
+      "item_id": -1
     },
     {
-      "action_id": 1,
-      "action": "delete ore",
+      "action_id": 5,
+      "type": "add_ore",
       "item_id": 0
     },
     {
       "action_id": 2,
-      "action": "change location",
+      "type": "delete_ore",
+      "item_id": 0
+    },
+    {
+      "action_id": 1,
+      "type": "change_location",
       "item_id": -1
     },
     {
       "action_id": 3,
-      "action": "change room",
+      "type": "change_room",
       "item_id": -1
     },
     {
       "action_id": 4,
-      "action": "fight",
+      "type": "fight",
       "item_id": -1
     }
   ]

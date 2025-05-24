@@ -1,9 +1,8 @@
+#include "classes.h"
+
 #include <iostream>
 #include <fstream>
-#include "Json-Files/json.hpp" // nlohmann::json
-#include <vector>
-
-#include "classes.h"
+#include "json.hpp" // nlohmann::json
 
 std::vector<Location> locations_loader(std::string path)
 {
@@ -60,5 +59,34 @@ std::vector<Interaction> interactions_loader(std::string path)
         }
 
         return interactions;
+    }
+}
+
+std::vector<Action> actions_loader(std::string path)
+{
+    std::ifstream file(path);
+
+    if (!file.is_open())
+    {
+        std::cerr << "Actions file is not found" << std::endl;
+        return {};
+    }
+    else
+    {
+        nlohmann::json json;
+        file >> json;
+
+        std::vector<Action> actions;
+
+        for (const auto& action_in_json : json["actions"])
+        {
+            int _id =               action_in_json["action_id"];
+            std::string _type =     action_in_json["type"];
+            int _item_id =          action_in_json["item_id"];
+
+            actions.emplace_back(_id, _type, _item_id);
+        }
+
+        return actions;
     }
 }
