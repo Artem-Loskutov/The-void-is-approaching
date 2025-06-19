@@ -15,19 +15,6 @@ void Entity::change_attr(std::string attr_name, int attr_change)
     attributes[attr_name] += attr_change;
 }
 
-void Entity::check_attr()
-{
-    std::cout << id << " \n" << name << "\n";
-
-    if (attributes.size())
-    {
-        for (auto& attr : attributes)
-        {
-            std::cout << attr.first << " " << attr.second;
-        }
-    }
-}
-
 // Player class
 
 Player::Player(

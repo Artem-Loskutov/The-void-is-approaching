@@ -3,6 +3,7 @@
 #include <iostream>
 #include "json-loader.h"
 #include "main-functions.h"
+#include "battle.h"
 
 void Game::set_data()
 {
@@ -65,6 +66,10 @@ void Game::create_commands()
         {
             player->inventory.remove_item(0);
         };
+    commands_by_type["start_battle"] = [&]()
+        {
+            battle(*player, entitys.at(1));
+        };
 }
 
 void Game::run()
@@ -76,7 +81,7 @@ void Game::run()
 
     int interaction_id = 0;
 
-    for (int i = 0; i < 3; i++)
+    for (int i = 0; i < 7; i++)
     {
         std::cout << "day" << i << std::endl;
 

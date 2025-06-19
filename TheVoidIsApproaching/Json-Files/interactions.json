@@ -1,6 +1,5 @@
 {
-  "interactions": 
-  [
+  "interactions": [
     {
       "interaction_id": 0,
       "text": "you analized location",
@@ -13,23 +12,23 @@
     },
     {
       "interaction_id": 2,
-      "text": "monsters attck you",
-      "actions_id": [ 6 ]
-    },
-    {
-      "interaction_id": 3,
       "text": "you are checking your inventory",
       "actions_id": [ 3 ]
     },
     {
-      "interaction_id": 4,
+      "interaction_id": 3,
       "text": "mine",
       "actions_id": [ 4 ]
     },
     {
-      "interaction_id": 5,
+      "interaction_id": 4,
       "text": "del",
       "actions_id": [ 5 ]
+    },
+    {
+      "interaction_id": 5,
+      "text": "monster attack you",
+      "actions_id": [ 6 ]
     }
   ],
 
@@ -61,7 +60,7 @@
     },
     {
       "action_id": 6,
-      "type": "fight"
+      "type": "start_battle"
     }
   ]
 }

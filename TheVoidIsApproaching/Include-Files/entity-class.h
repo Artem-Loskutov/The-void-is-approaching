@@ -17,7 +17,6 @@ public:
 
 	std::unordered_map<std::string, int> get_attr();
 	void change_attr(std::string, int);
-	void check_attr();
 };
 
 class Player : public Entity

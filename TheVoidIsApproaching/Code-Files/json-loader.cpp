@@ -109,15 +109,16 @@ std::vector<Entity> entitys_loader(std::string path)
 
         for (const auto& entity_in_json : json["entitys"])
         {
-            int _entity_id = entity_in_json["entity_id"];
-            std::string _entity_name = entity_in_json["entity_name"];
+            int _id = entity_in_json["entity_id"];
+            std::string _name = entity_in_json["entity_name"];
 
             std::unordered_map<std::string, int> attributes;
-            attributes["entity_hp"] = entity_in_json["entity_hp"];
-            attributes["entity_damage"] = entity_in_json["entity_damage"];
-            attributes["entity_movement"] = entity_in_json["entity_movement"];
+            attributes["hp"] = entity_in_json["entity_hp"];
+            attributes["resist"] = entity_in_json["entity_resist"];
+            attributes["damage"] = entity_in_json["entity_damage"];
+            attributes["movement"] = entity_in_json["entity_movement"];
 
-            entitys.emplace_back(_entity_id, _entity_name, attributes);
+            entitys.emplace_back(_id, _name, attributes);
         }
 
         return entitys;

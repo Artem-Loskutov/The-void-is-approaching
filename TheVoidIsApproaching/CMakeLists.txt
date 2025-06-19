@@ -14,9 +14,10 @@ set(SOURCES
     main.cpp
     Code-Files/json-loader.cpp
     Code-Files/main-functions.cpp
+    Code-Files/battle.cpp
     Code-Files/entity-class.cpp
     Code-Files/inventory-class.cpp
     Code-Files/game-class.cpp
 )
 
-add_executable(game-test ${SOURCES})
+add_executable(game ${SOURCES})
