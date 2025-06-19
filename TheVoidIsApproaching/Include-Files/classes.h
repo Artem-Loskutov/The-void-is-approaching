@@ -2,47 +2,45 @@
 
 #include <vector>
 #include <string>
+#include <unordered_map>
 
 class Location
 {
-private:
+public:
 	const int id;
 	const std::string name;
 	const std::vector<int> interactions_id;
-public:
-	Location(int _id, const std::string _name, const std::vector<int> _interactions_id);
 
-	int					get_id()			const;
-	std::string			get_name()			const;
-	std::vector<int>	get_interactions()	const;
+	Location(int _id, std::string _name, std::vector<int> _interactions_id);
 };
 
 class Interaction
 {
-private:
+public:
 	const int id;
 	const std::string text;
 	const std::vector<int> actions_id;
-public:
-	Interaction(int _id, const std::string _text, const std::vector<int> _actions_id);
 
-	int					get_id()		const;
-	std::string			get_text()		const;
-	std::vector<int>	get_actions()	const;
+	Interaction(int _id, std::string _text, std::vector<int> _actions_id);
 };
 
 class Action
 {
-private:
+public:
 	const int id;
 	const std::string type;
-	const int item_id;
-public:
-	Action(int _id, const std::string _type, int _item_id);
 
-	int					get_id()		const;
-	std::string			get_type()		const;
-	int					get_item_id()	const;
+	Action(int _id, std::string _type);
+};
+
+class Inventory
+{
+private:
+	std::unordered_map<int, int> inventory;
+public:
+	void add_item(int item_id);
+	void remove_item(int item_id);
+	void check();
 };
 
 class Player
@@ -50,8 +48,24 @@ class Player
 private:
 	Location* current_location;
 public:
+	Inventory inventory;
+
 	Player(Location* _current_locations);
 
-	void				set_location(Location*);
-	Location*			get_location()				const;
+	void					set_location(Location*);
+	const Location*			get_location()				const;
+};
+
+class Game
+{
+private:
+	std::vector<Location>		locations;
+	std::vector<Interaction>	interactions;
+	std::vector<Action>			actions;
+
+	Player player;
+public:
+	Game();
+
+	void run();
 };

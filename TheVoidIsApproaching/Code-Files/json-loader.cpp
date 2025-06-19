@@ -82,9 +82,8 @@ std::vector<Action> actions_loader(std::string path)
         {
             int _id =               action_in_json["action_id"];
             std::string _type =     action_in_json["type"];
-            int _item_id =          action_in_json["item_id"];
 
-            actions.emplace_back(_id, _type, _item_id);
+            actions.emplace_back(_id, _type);
         }
 
         return actions;

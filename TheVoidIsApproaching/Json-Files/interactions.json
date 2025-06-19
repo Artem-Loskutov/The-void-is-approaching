@@ -13,11 +13,21 @@
     {
       "interaction_id": 2,
       "text": "monsters attck you",
-      "actions_id": [ 4 ]
+      "actions_id": [ 6 ]
     },
     {
       "interaction_id": 3,
-      "text": "mining some ore",
+      "text": "you are checking your inventory",
+      "actions_id": [ 3 ]
+    },
+    {
+      "interaction_id": 4,
+      "text": "mine",
+      "actions_id": [ 4 ]
+    },
+    {
+      "interaction_id": 5,
+      "text": "del",
       "actions_id": [ 5 ]
     }
   ],
@@ -25,33 +35,31 @@
   "actions": [
     {
       "action_id": 0,
-      "type": "get_location_info",
-      "item_id": -1
-    },
-    {
-      "action_id": 5,
-      "type": "add_ore",
-      "item_id": 0
-    },
-    {
-      "action_id": 2,
-      "type": "delete_ore",
-      "item_id": 0
+      "type": "get_location_info"
     },
     {
       "action_id": 1,
-      "type": "change_location",
-      "item_id": -1
+      "type": "change_location"
+    },
+    {
+      "action_id": 2,
+      "type": "change_room"
     },
     {
       "action_id": 3,
-      "type": "change_room",
-      "item_id": -1
+      "type": "check_inventory"
     },
     {
       "action_id": 4,
-      "type": "fight",
-      "item_id": -1
+      "type": "add_item"
+    },
+    {
+      "action_id": 5,
+      "type": "remove_item"
+    },
+    {
+      "action_id": 6,
+      "type": "fight"
     }
   ]
 }
