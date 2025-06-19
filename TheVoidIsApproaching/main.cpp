@@ -1,7 +1,6 @@
-﻿#include "classes.h"
+﻿#include "game-class.h"
 
 int main() 
 {
     Game game;
-    game.run();
 }

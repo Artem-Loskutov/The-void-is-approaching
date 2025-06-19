@@ -1,0 +1,12 @@
+{
+  "entitys":
+  [
+    {
+      "entity_id": 0,
+      "entity_name": "player",
+      "entity_hp": 3,
+      "entity_damage": 1,
+      "entity_movement": 2
+    }
+  ]
+}

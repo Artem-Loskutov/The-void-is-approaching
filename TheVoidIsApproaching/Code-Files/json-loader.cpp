@@ -1,7 +1,8 @@
-#include "classes.h"
+#include "json-loader.h"
 
-#include <iostream>
+#include "entity-class.h"
 #include <fstream>
+#include <iostream>
 #include "json.hpp" // nlohmann::json
 
 std::vector<Location> locations_loader(std::string path)
@@ -87,5 +88,38 @@ std::vector<Action> actions_loader(std::string path)
         }
 
         return actions;
+    }
+}
+
+std::vector<Entity> entitys_loader(std::string path)
+{
+    std::ifstream file(path);
+
+    if (!file.is_open())
+    {
+        std::cerr << "Entitys file is not found" << std::endl;
+        return {};
+    }
+    else
+    {
+        nlohmann::json json;
+        file >> json;
+
+        std::vector<Entity> entitys;
+
+        for (const auto& entity_in_json : json["entitys"])
+        {
+            int _entity_id = entity_in_json["entity_id"];
+            std::string _entity_name = entity_in_json["entity_name"];
+
+            std::unordered_map<std::string, int> attributes;
+            attributes["entity_hp"] = entity_in_json["entity_hp"];
+            attributes["entity_damage"] = entity_in_json["entity_damage"];
+            attributes["entity_movement"] = entity_in_json["entity_movement"];
+
+            entitys.emplace_back(_entity_id, _entity_name, attributes);
+        }
+
+        return entitys;
     }
 }

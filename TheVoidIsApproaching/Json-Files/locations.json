@@ -1,5 +1,6 @@
 {
-  "locations": [
+  "locations":
+  [
     {
       "location_id": 0,
       "location_name": "base",

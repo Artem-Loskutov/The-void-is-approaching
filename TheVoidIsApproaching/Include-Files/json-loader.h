@@ -1,9 +1,10 @@
 #pragma once
 
-#include "classes.h"
-
 #include <vector>
+#include "game-structs.h"
+#include "entity-class.h"
 
-std::vector<Location> locations_loader(std::string path);
-std::vector<Interaction> interactions_loader(std::string path);
-std::vector<Action> actions_loader(std::string path);
+std::vector<Location>		locations_loader		(std::string file_path);
+std::vector<Interaction>	interactions_loader		(std::string file_path);
+std::vector<Action>			actions_loader			(std::string file_path);
+std::vector<Entity>			entitys_loader			(std::string file_path);
