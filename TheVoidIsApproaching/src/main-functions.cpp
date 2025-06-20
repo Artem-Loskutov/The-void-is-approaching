@@ -1,12 +1,12 @@
-#include "main-functions.h"
+#include "main-functions.hpp"
 
 #include <iostream>
 
-void complete_interaction(Interaction* interaction,
+void complete_interaction(Interaction& interaction,
 	std::unordered_map<int, Action*>& actions_by_id,
 	std::unordered_map<std::string, std::function<void()>>& commands_by_type)
 {
-	for (const int& action_id : interaction->actions_id)
+	for (const int& action_id : interaction.actions_id)
 	{
 		if (actions_by_id.contains(action_id))
 		{
@@ -18,5 +18,5 @@ void complete_interaction(Interaction* interaction,
 		}
 	}
 
-	std::cout << interaction->result << std::endl;
+	std::cout << interaction.result << std::endl;
 }

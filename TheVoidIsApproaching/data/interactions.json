@@ -1,5 +1,6 @@
 {
-  "interactions": [
+  "interactions":
+  [
     {
       "interaction_id": 0,
       "description": "Get information about the current location",

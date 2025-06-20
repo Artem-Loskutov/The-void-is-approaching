@@ -6,19 +6,19 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 include_directories(
 ${PROJECT_SOURCE_DIR}
-${PROJECT_SOURCE_DIR}/Include-Files
-${PROJECT_SOURCE_DIR}/Code-Files
+${PROJECT_SOURCE_DIR}/include
+${PROJECT_SOURCE_DIR}/src
 )
 
 set(SOURCES
     main.cpp
-    Code-Files/json-loader.cpp
-    Code-Files/main-functions.cpp
-    Code-Files/battle.cpp
-    Code-Files/entity-class.cpp
-    Code-Files/inventory-class.cpp
-    Code-Files/game-class.cpp
-    Code-Files/interface.cpp
+    src/json-loader.cpp
+    src/game.cpp
+    src/entity.cpp
+    src/inventory.cpp
+    src/battle.cpp
+    src/main-functions.cpp
+    src/interface.cpp
 )
 
 add_executable(game ${SOURCES})

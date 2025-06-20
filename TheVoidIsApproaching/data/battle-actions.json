@@ -1,0 +1,41 @@
+{
+  "battle_actions":
+  [
+    {
+      "battle_action_id": 0,
+      "name": "hit",
+      "target": "opponent",
+      "health": 0,
+      "resist": 0,
+      "damage": 1,
+      "movement": -1
+    },
+    {
+      "battle_action_id": 1,
+      "name": "block",
+      "target": "user",
+      "health": 0,
+      "resist": 1,
+      "damage": 0,
+      "movement": -1
+    },
+    {
+      "battle_action_id": 2,
+      "name": "heal",
+      "target": "user",
+      "health": 2,
+      "resist": 0,
+      "damage": 0,
+      "movement": -2
+    },
+    {
+      "battle_action_id": 3,
+      "name": "escape",
+      "target": "user",
+      "health": 0,
+      "resist": -1,
+      "damage": 1,
+      "movement": -2
+    }
+  ]
+}
