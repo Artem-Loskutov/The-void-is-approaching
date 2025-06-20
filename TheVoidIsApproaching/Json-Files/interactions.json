@@ -2,33 +2,33 @@
   "interactions": [
     {
       "interaction_id": 0,
-      "text": "you analized location",
+      "description": "Get information about the current location",
+      "result": "Information received",
       "actions_id": [ 0 ]
     },
     {
       "interaction_id": 1,
-      "text": "you dicede to change location",
+      "description": "Move to a different location",
+      "result": "Location changed",
       "actions_id": [ 1 ]
     },
     {
       "interaction_id": 2,
-      "text": "you are checking your inventory",
+      "description": "Check the inventory",
+      "result": "Inventory checked",
       "actions_id": [ 3 ]
     },
     {
       "interaction_id": 3,
-      "text": "mine",
+      "description": "Mine some ore",
+      "result": "Ore collected",
       "actions_id": [ 4 ]
     },
     {
       "interaction_id": 4,
-      "text": "del",
+      "description": "Drop ore",
+      "result": "Ore droped",
       "actions_id": [ 5 ]
-    },
-    {
-      "interaction_id": 5,
-      "text": "monster attack you",
-      "actions_id": [ 6 ]
     }
   ],
 

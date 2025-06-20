@@ -24,7 +24,7 @@ std::vector<Location> locations_loader(std::string path)
         for (const auto& location_in_json : json["locations"])
         {
             int _id =               location_in_json["location_id"];
-            std::string _name =     location_in_json["location_name"];
+            std::string _name =     location_in_json["name"];
             auto _interactions_id = location_in_json["interactions_id"].get<std::vector<int>>();
 
             locations.emplace_back(_id, _name, _interactions_id);
@@ -52,11 +52,12 @@ std::vector<Interaction> interactions_loader(std::string path)
 
         for (const auto& interaction_in_json : json["interactions"])
         {
-            int _id =               interaction_in_json["interaction_id"];
-            std::string _text =     interaction_in_json["text"];
-            auto _actions_id =      interaction_in_json["actions_id"].get<std::vector<int>>();
+            int _id =                   interaction_in_json["interaction_id"];
+            std::string _description =  interaction_in_json["description"];
+            std::string _result =       interaction_in_json["result"];
+            auto _actions_id =          interaction_in_json["actions_id"].get<std::vector<int>>();
 
-            interactions.emplace_back(_id, _text, _actions_id);
+            interactions.emplace_back(_id, _description, _result, _actions_id);
         }
 
         return interactions;
@@ -91,13 +92,13 @@ std::vector<Action> actions_loader(std::string path)
     }
 }
 
-std::vector<Entity> entitys_loader(std::string path)
+std::vector<Entity> entities_loader(std::string path)
 {
     std::ifstream file(path);
 
     if (!file.is_open())
     {
-        std::cerr << "Entitys file is not found" << std::endl;
+        std::cerr << "entities file is not found" << std::endl;
         return {};
     }
     else
@@ -105,22 +106,22 @@ std::vector<Entity> entitys_loader(std::string path)
         nlohmann::json json;
         file >> json;
 
-        std::vector<Entity> entitys;
+        std::vector<Entity> entities;
 
-        for (const auto& entity_in_json : json["entitys"])
+        for (const auto& entity_in_json : json["entities"])
         {
             int _id = entity_in_json["entity_id"];
-            std::string _name = entity_in_json["entity_name"];
+            std::string _name = entity_in_json["name"];
 
             std::unordered_map<std::string, int> attributes;
-            attributes["hp"] = entity_in_json["entity_hp"];
-            attributes["resist"] = entity_in_json["entity_resist"];
-            attributes["damage"] = entity_in_json["entity_damage"];
-            attributes["movement"] = entity_in_json["entity_movement"];
+            attributes["hp"] = entity_in_json["hp"];
+            attributes["resist"] = entity_in_json["resist"];
+            attributes["damage"] = entity_in_json["damage"];
+            attributes["movement"] = entity_in_json["movement"];
 
-            entitys.emplace_back(_id, _name, attributes);
+            entities.emplace_back(_id, _name, attributes);
         }
 
-        return entitys;
+        return entities;
     }
 }

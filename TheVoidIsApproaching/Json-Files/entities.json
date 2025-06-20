@@ -1,0 +1,36 @@
+{
+  "entities": [
+    {
+      "entity_id": 0,
+      "name": "player",
+      "hp": 3,
+      "resist": 0,
+      "damage": 1,
+      "movement": 2
+    },
+    {
+      "entity_id": 1,
+      "name": "wild folf",
+      "hp": 2,
+      "resist": 0,
+      "damage": 1,
+      "movement": 3
+    },
+    {
+      "entity_id": 2,
+      "name": "wild bear",
+      "hp": 5,
+      "resist": 1,
+      "damage": 2,
+      "movement": 1
+    },
+    {
+      "entity_id": 3,
+      "name": "something",
+      "hp": 10,
+      "resist": 1,
+      "damage": 3,
+      "movement": 2
+    }
+  ]
+}

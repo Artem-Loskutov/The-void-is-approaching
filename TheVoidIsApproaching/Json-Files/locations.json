@@ -3,18 +3,18 @@
   [
     {
       "location_id": 0,
-      "location_name": "base",
-      "interactions_id": [ 0, 1, 3, 4, 5 ]
+      "name": "base",
+      "interactions_id": [ 0, 1 ]
     },
     {
       "location_id": 1,
-      "location_name": "mine",
-      "interactions_id": [ 0, 1, 3, 4, 5 ]
+      "name": "mine",
+      "interactions_id": [ 0, 1, 3, 4 ]
     },
     {
       "location_id": 2,
-      "location_name": "storage",
-      "interactions_id": [ 0, 1, 3, 4, 5 ]
+      "name": "storage",
+      "interactions_id": [ 0, 1 ]
     }
   ]
 }

@@ -13,7 +13,8 @@ struct Location
 struct Interaction
 {
 	const int id;
-	const std::string text;
+	const std::string description;
+	const std::string result;
 	const std::vector<int> actions_id;
 };
 

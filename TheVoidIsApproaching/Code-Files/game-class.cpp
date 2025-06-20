@@ -1,5 +1,6 @@
 #include "game-class.h"
 
+#include "interface.h"
 #include <iostream>
 #include "json-loader.h"
 #include "main-functions.h"
@@ -10,7 +11,7 @@ void Game::set_data()
     locations =     locations_loader("Json-Files/locations.json");
     interactions =  interactions_loader("Json-Files/interactions.json");
     actions =       actions_loader("Json-Files/interactions.json");
-    entitys =       entitys_loader("Json-Files/entitys.json");
+    entities =      entities_loader("Json-Files/entities.json");
 };
 
 void Game::build_indexes()
@@ -22,7 +23,7 @@ void Game::build_indexes()
 
     for (Interaction& interaction : interactions)
     {
-        interactions_by_id[interaction.id] = &interaction;
+        interaction_by_id[interaction.id] = &interaction;
     }
 
     for (Action& action : actions)
@@ -33,25 +34,24 @@ void Game::build_indexes()
 
 void Game::create_player()
 {
-    player = std::make_unique<Player>(entitys.at(0).id, entitys.at(0).name, entitys.at(0).get_attr(), &locations.at(0));
+    player = std::make_unique<Player>(entities.at(0).id, entities.at(0).name, entities.at(0).get_attr(), &locations.at(0));
 }
 
 void Game::create_commands()
 {
     commands_by_type["get_location_info"] = [&]()
         {
-            std::cout << player->get_location()->name;
+            std::cout << player->get_location()->name << std::endl;
         };
     commands_by_type["change_location"] = [&]()
         {
-            std::cout << "Enter location name\n";
+            std::cout << "Enter location name: ";
             std::string location_name = "";
             std::cin >> location_name;
 
             if (locations_by_name.contains(location_name))
             {
                 player->set_location(locations_by_name[location_name]);
-                std::cout << "Location changed to " << location_name;
             }
         };
     commands_by_type["check_inventory"] = [&]()
@@ -68,7 +68,7 @@ void Game::create_commands()
         };
     commands_by_type["start_battle"] = [&]()
         {
-            battle(*player, entitys.at(1));
+            battle(*player, entities.at(1));
         };
 }
 
@@ -79,23 +79,27 @@ void Game::run()
     create_player();
     create_commands();
 
-    int interaction_id = 0;
-
-    for (int i = 0; i < 7; i++)
+    for (int day = 0, interaction_id = 0; day < 7; day++)
     {
-        std::cout << "day" << i << std::endl;
+        write_frame(day, *player, interaction_by_id);
 
         std::cin >> interaction_id;
 
-        if (interactions_by_id.contains(interaction_id))
+        auto& loc_interactions = player->get_location()->interactions_id;
+
+        if (interaction_by_id.contains(interaction_id) &&
+            std::find(loc_interactions.begin(), loc_interactions.end(), interaction_by_id[interaction_id]->id) != loc_interactions.end())
         {
-            complete_interaction(*player, interactions_by_id[interaction_id], actions_by_id, commands_by_type);
+            complete_interaction(interaction_by_id[interaction_id], actions_by_id, commands_by_type);
         }
         else
         {
-            std::cout << "unknown interaction";
+            std::cout << "Unknown interaction\n";
         }
-        std::cout << std::endl;
+
+        std::cout << "\nPress enter to continue";
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        std::cin.get();
     }
 }
 

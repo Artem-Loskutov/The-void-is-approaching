@@ -18,6 +18,7 @@ set(SOURCES
     Code-Files/entity-class.cpp
     Code-Files/inventory-class.cpp
     Code-Files/game-class.cpp
+    Code-Files/interface.cpp
 )
 
 add_executable(game ${SOURCES})
