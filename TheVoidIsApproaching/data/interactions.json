@@ -2,8 +2,7 @@
   "interactions": [
     {
       "interaction_id": 0,
-      "description": "Get information about the current location",
-      "result": "Information received",
+      "description": "Get information about all locations",
       "actions_id": [ 0 ],
       "item_args": [ 0, 0 ]
     },
@@ -27,14 +26,14 @@
     },
     {
       "interaction_id": 4,
-      "description": "Drop ore",
-      "actions_id": [ 5 ],
-      "item_args": [ 2, 1 ]
+      "description": "Create handgun. Need 6 ore.",
+      "actions_id": [ 8 ],
+      "item_args": [ 2, 6, 1, 1]
     },
     {
       "interaction_id": 5,
       "description": "Start hunting",
-      "actions_id": [ 6 ],
+      "actions_id": [ 6, 9 ],
       "item_args": [ 0, 0 ]
     },
     {
@@ -42,13 +41,19 @@
       "description": "Change weapon",
       "actions_id": [ 7 ],
       "item_args": [ 0, 0 ]
+    },
+    {
+      "interaction_id": 7,
+      "description": "Repair rocket. Need 15 ore.",
+      "actions_id": [ 8, 9 ],
+      "item_args": [ 2, 15, 3, 1 ]
     }
   ],
 
   "actions": [
     {
       "action_id": 0,
-      "type": "get_location_info"
+      "type": "get_locations_info"
     },
     {
       "action_id": 1,
@@ -77,6 +82,14 @@
     {
       "action_id": 7,
       "type": "change_weapon"
+    },
+    {
+      "action_id": 8,
+      "type": "exchange_items"
+    },
+    {
+      "action_id": 9,
+      "type": "game_end"
     }
   ]
 }

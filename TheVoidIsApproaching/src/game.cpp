@@ -54,9 +54,12 @@ void Game::create_player()
 
 void Game::create_commands()
 {
-    commands_by_type["get_location_info"] = [&]()
+    commands_by_type["get_locations_info"] = [&]()
         {
-            std::cout << player->current_location->name << std::endl;
+            for (const auto& location : locations)
+            {
+                std::cout << location.name << std::endl;
+            }
         };
     commands_by_type["change_location"] = [&]()
         {
@@ -84,6 +87,19 @@ void Game::create_commands()
             std::cin >> item_name;
             player->inventory->select(item_name, item_by_id);
         };
+    commands_by_type["game_end"] = [&]()
+        {
+            if (player->stats.health <= 0)
+            {
+                std::cout << "You died.";
+                exit(0);
+            }
+            if (player->inventory->has(3, item_by_id))
+            {
+                std::cout << "You win.";
+                exit(0);
+            }
+        };
 
     inventory_change_commands["add_item"] = [&](int item_id, int count)
         {
@@ -92,6 +108,14 @@ void Game::create_commands()
     inventory_change_commands["remove_item"] = [&](int item_id, int count)
         {
             player->inventory->remove(item_id, count);
+        };
+
+    exchange_command["exchange_items"] = [&](int get_item_id, int get_count, int set_item_id, int set_count)
+        {
+            if (player->inventory->remove(get_item_id, get_count))
+            {
+                player->inventory->add(set_item_id, set_count);
+            }
         };
 }
 
@@ -102,9 +126,11 @@ void Game::run()
     create_player();
     create_commands();
 
-    for (int day = 0, interaction_id = 0; day < 7; day++)
+    for (int day = 0; day < 10; day++)
     {
         write_frame(day, *player, interaction_by_id);
+
+        int interaction_id = 0;
         std::cin >> interaction_id;
 
         auto& loc_interactions = player->current_location->interactions_id;
@@ -112,7 +138,7 @@ void Game::run()
         if (interaction_by_id.contains(interaction_id) &&
             std::find(loc_interactions.begin(), loc_interactions.end(), interaction_by_id[interaction_id]->id) != loc_interactions.end())
         {
-            complete_interaction(*interaction_by_id[interaction_id], action_by_id, commands_by_type, inventory_change_commands);
+            complete_interaction(*interaction_by_id[interaction_id], action_by_id, commands_by_type, inventory_change_commands, exchange_command);
         }
         else
         {

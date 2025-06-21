@@ -1,6 +1,5 @@
 {
-  "locations":
-  [
+  "locations": [
     {
       "location_id": 0,
       "name": "base",
@@ -13,8 +12,13 @@
     },
     {
       "location_id": 2,
-      "name": "storage",
-      "interactions_id": [ 0, 1, 2, 4, 6 ]
+      "name": "rocket",
+      "interactions_id": [ 0, 1, 2, 6, 7 ]
+    },
+    {
+      "location_id": 3,
+      "name": "workshop",
+      "interactions_id": [ 0, 1, 2, 3, 4, 6 ]
     }
   ]
 }

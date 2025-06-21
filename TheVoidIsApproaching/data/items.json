@@ -1,6 +1,5 @@
 {
-  "items":
-  [
+  "items": [
     {
       "item_id": 0,
       "name": "knife",
@@ -15,6 +14,11 @@
       "item_id": 2,
       "name": "ore",
       "damage": 1
+    },
+    {
+      "item_id": 3,
+      "name": "key",
+      "damage": 0
     }
   ]
 }
