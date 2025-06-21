@@ -24,8 +24,8 @@ std::vector<Interaction> load_interactions(const std::string& path)
 			return Interaction(
 				json["interaction_id"],
 				json["description"],
-				json["result"],
-				json["actions_id"].get<std::vector<int>>());
+				json["actions_id"].get<std::vector<int>>(),
+				json["item_args"].get<std::vector<int>>());
 		});
 }
 
@@ -57,6 +57,20 @@ std::vector<Battle_Action> load_battle_actions(const std::string& path)
 				json["resist"],
 				json["damage"],
 				json["movement"]);
+		});
+}
+
+std::vector<Item> load_items(const std::string& path)
+{
+	return json_to_vector<Item>(
+		path,
+		"items",
+		[](const nlohmann::json& json)
+		{
+			return Item(
+				json["item_id"],
+				json["name"],
+				json["damage"]);
 		});
 }
 

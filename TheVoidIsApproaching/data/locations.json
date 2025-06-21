@@ -4,17 +4,17 @@
     {
       "location_id": 0,
       "name": "base",
-      "interactions_id": [ 0, 1 ]
+      "interactions_id": [ 0, 1, 2, 6 ]
     },
     {
       "location_id": 1,
       "name": "mine",
-      "interactions_id": [ 0, 1 ]
+      "interactions_id": [ 0, 1, 2, 3, 5, 6 ]
     },
     {
       "location_id": 2,
       "name": "storage",
-      "interactions_id": [ 0, 1 ]
+      "interactions_id": [ 0, 1, 2, 4, 6 ]
     }
   ]
 }

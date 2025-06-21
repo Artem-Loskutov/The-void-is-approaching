@@ -1,40 +1,51 @@
 {
-  "interactions":
-  [
+  "interactions": [
     {
       "interaction_id": 0,
       "description": "Get information about the current location",
       "result": "Information received",
-      "actions_id": [ 0 ]
+      "actions_id": [ 0 ],
+      "item_args": [ 0, 0 ]
     },
     {
       "interaction_id": 1,
       "description": "Move to a different location",
-      "result": "Location changed",
-      "actions_id": [ 1 ]
+      "actions_id": [ 1 ],
+      "item_args": [ 0, 0 ]
     },
     {
       "interaction_id": 2,
       "description": "Check the inventory",
-      "result": "Inventory checked",
-      "actions_id": [ 3 ]
+      "actions_id": [ 3 ],
+      "item_args": [ 0, 0 ]
     },
     {
       "interaction_id": 3,
       "description": "Mine some ore",
-      "result": "Ore collected",
-      "actions_id": [ 4 ]
+      "actions_id": [ 4 ],
+      "item_args": [ 2, 3 ]
     },
     {
       "interaction_id": 4,
       "description": "Drop ore",
-      "result": "Ore droped",
-      "actions_id": [ 5 ]
+      "actions_id": [ 5 ],
+      "item_args": [ 2, 1 ]
+    },
+    {
+      "interaction_id": 5,
+      "description": "Start hunting",
+      "actions_id": [ 6 ],
+      "item_args": [ 0, 0 ]
+    },
+    {
+      "interaction_id": 6,
+      "description": "Change weapon",
+      "actions_id": [ 7 ],
+      "item_args": [ 0, 0 ]
     }
   ],
 
-  "actions":
-  [
+  "actions": [
     {
       "action_id": 0,
       "type": "get_location_info"
@@ -62,6 +73,10 @@
     {
       "action_id": 6,
       "type": "start_battle"
+    },
+    {
+      "action_id": 7,
+      "type": "change_weapon"
     }
   ]
 }

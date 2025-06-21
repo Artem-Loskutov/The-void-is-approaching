@@ -23,11 +23,11 @@ void write_frame(
 	std::unordered_map<int,Interaction*>& interaction_by_id);
 
 void write_battle_info(
-	Entity& player,
+	Player& player,
 	Entity& enemy);
 void write_available_battle_actions(
 	std::unordered_map<int,Battle_Action*>& battle_actions_by_id);
 void write_battle_frame(
-	Entity& player,
+	Player& player,
 	Entity& enemy,
 	std::unordered_map<int,Battle_Action*>& battle_actions_by_id);

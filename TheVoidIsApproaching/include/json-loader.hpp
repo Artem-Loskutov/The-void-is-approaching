@@ -39,5 +39,6 @@ std::vector<Location>       load_locations(const std::string& path);
 std::vector<Interaction>    load_interactions(const std::string& path);
 std::vector<Action>         load_actions(const std::string& path);
 std::vector<Battle_Action>  load_battle_actions(const std::string& path);
+std::vector<Item>           load_items(const std::string& path);
 
 std::vector<Entity>         load_entities(const std::string& path);

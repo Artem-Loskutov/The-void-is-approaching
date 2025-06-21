@@ -6,7 +6,7 @@
 
 void player_move(
 	int battle_action_id,
-	Entity& player,
+	Player& player,
 	Entity& enemy,
 	std::unordered_map<int, Battle_Action*>& battle_action_by_id,
 	std::vector<Entity>& entities)
@@ -16,7 +16,7 @@ void player_move(
 		auto& battle_action = battle_action_by_id[battle_action_id];
 		if (battle_action->target == "opponent")
 		{
-			int clear_damage = player.stats.damage * battle_action->damage - enemy.stats.resist;
+			int clear_damage = (player.stats.damage * player.inventory->selected_item->damage) * battle_action->damage - enemy.stats.resist;
 			if (clear_damage > 0)
 			{
 				enemy.stats.health -= clear_damage;
@@ -41,15 +41,19 @@ void player_move(
 }
 
 void enemy_move(
-	Entity& player,
+	Player& player,
 	Entity& enemy)
 {
-	player.stats.health -= enemy.stats.damage;
+	int clear_damage = enemy.stats.damage - player.stats.resist;
+	if (clear_damage > 0)
+	{
+		player.stats.health -= clear_damage;
+	}
 	enemy.stats.movement -= 1;
 }
 
 void battle(
-	Entity& player,
+	Player& player,
 	Entity enemy,
 	std::unordered_map<int, Battle_Action*>& battle_action_by_id,
 	std::vector<Entity>& entities)
@@ -82,6 +86,9 @@ void battle(
 			write_battle_frame(player, enemy, battle_action_by_id);
 		}
 
+		player.stats.resist = entities.at(player.id).stats.resist;
+		player.stats.movement = entities.at(player.id).stats.movement;
+		enemy.stats.movement = entities.at(enemy.id).stats.movement;
 		wait_for_enter();
 	}
 }

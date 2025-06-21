@@ -25,7 +25,8 @@ void write_main_info(
 		date << " | " <<
 		color_text(player.name, "\033[36m") << ", " <<
 		"location: " << color_text(player.current_location->name, "\033[35m") << ", " <<
-		"health:" << color_text(std::to_string(player.stats.health), "\033[31m") << "\n";
+		"health:" << color_text(std::to_string(player.stats.health), "\033[31m") << ", " <<
+		"selected weapon: " << color_text(player.inventory->selected_item->name, "\033[32m") << "\n";
 }
 void write_available_interactions(
 	Player& player,
@@ -51,13 +52,13 @@ void write_frame(
 }
 
 void write_battle_info(
-	Entity& player,
+	Player& player,
 	Entity& enemy)
 {
 	std::cout << color_text(player.name, "\033[36m") << ", " <<
 		"health: " << color_text(std::to_string(player.stats.health), "\033[31m") << ", " <<
 		"resist: " << color_text(std::to_string(player.stats.resist), "\033[31m") << ", " <<
-		"damage: " << color_text(std::to_string(player.stats.damage), "\033[31m") << ", " <<
+		"damage: " << color_text(std::to_string(player.stats.damage * player.inventory->selected_item->damage), "\033[31m") << ", " <<
 		"movement: " << color_text(std::to_string(player.stats.movement), "\033[31m") << ", " <<
 		" | " <<
 		color_text(enemy.name, "\033[35m") << ", " <<
@@ -78,7 +79,7 @@ void write_available_battle_actions(
 }
 
 void write_battle_frame(
-	Entity& player,
+	Player& player,
 	Entity& enemy,
 	std::unordered_map<int,Battle_Action*>& battle_actions_by_id)
 {

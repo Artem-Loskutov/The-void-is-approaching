@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <memory>
 #include "json-structs.hpp"
 #include "inventory.hpp"
 
@@ -30,7 +31,7 @@ class Player : public Entity
 {
 public:
 	Location* current_location;
-	Inventory inventory;
+	std::unique_ptr<Inventory> inventory;
 
 	Player(int _id,	std::string _name, Stats _stats, Location& _current_location);
 };

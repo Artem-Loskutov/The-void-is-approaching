@@ -18,11 +18,11 @@ struct Interaction
 {
 	int					id;
 	std::string			description;
-	std::string			result;
 	std::vector<int>	actions_id;
+	std::vector<int>	item_args;
 
-	Interaction(int _id, std::string _description, std::string _result, std::vector<int> _actions_id)
-		: id(_id), description(std::move(_description)), result(std::move(_result)), actions_id(std::move(_actions_id))
+	Interaction(int _id, std::string _description, std::vector<int> _actions_id, std::vector<int> _item_args)
+		: id(_id), description(std::move(_description)), actions_id(std::move(_actions_id)), item_args(std::move(_item_args))
 	{}
 };
 
@@ -49,4 +49,15 @@ struct Battle_Action
 	Battle_Action(int _id, std::string _name, std::string _target, int _health, int _resist, int _damage, int _movement)
 		: id(_id), name(std::move(_name)), target(std::move(_target)), health(_health), resist(_resist), damage(_damage), movement(_movement)
 	{}
+};
+
+struct Item
+{
+	int				id;
+	std::string		name;
+	int				damage;
+
+	Item(int _id, std::string _name, int _damage)
+		: id(_id), name(_name), damage(_damage)
+	{ }
 };

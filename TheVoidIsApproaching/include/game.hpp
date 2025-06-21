@@ -15,6 +15,7 @@ private:
 	std::vector<Interaction>	interactions;
 	std::vector<Action>			actions;
 	std::vector<Battle_Action>	battle_actions;
+	std::vector<Item>			items;
 
 	std::vector<Entity>			entities;
 
@@ -22,8 +23,10 @@ private:
 	std::unordered_map<int, Interaction*>			interaction_by_id;
 	std::unordered_map<int, Action*>				action_by_id;
 	std::unordered_map<int, Battle_Action*>			battle_action_by_id;
+	std::unordered_map<int, Item*>					item_by_id;
 
 	std::unordered_map<std::string, std::function<void()>>	commands_by_type;
+	std::unordered_map<std::string, std::function<void(int, int)>>	inventory_change_commands;
 
 	std::unique_ptr<Player> player;
 
